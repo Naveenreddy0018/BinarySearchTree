@@ -28,6 +28,49 @@ public class BinarySearchTree {
 		}
 		return root;
 	}
+
+	public int maxele() {
+        Node max_ele = root;
+        while(max_ele.right != null) {
+            max_ele = max_ele.right;
+        }
+        return max_ele.value;
+    }
+
+    public int minele() {
+        Node min_ele = root;
+        while(min_ele.left != null) {
+            min_ele = min_ele.left;
+        }
+        return min_ele.left;
+    }
+
+    public int getHeight(Node n) {
+        if(node == null) {
+            return -1;
+        }
+        int leftHeight = getHeight(n.left);
+        int rightHeight = getHeight(n.right);
+        return 1+(Math.max(leftHeight, rightHeight));
+
+        //return 1 + (Math.max(getHeight(n.left), getHeight(n.right));
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public boolean balanced() {
+        return balanced(root);
+    }
+
+    private boolean balanced(Node node) {
+        if(node == null) {
+            return false;
+        }
+        return Math.abs(getHeight(node.left), getHeight(node.right)) && balanced(node.left) && balanced(node.right);
+    }
+	
 	void preorder(Node root) {
 		if(root!=null) {
 			System.out.print(root.data+" ");
