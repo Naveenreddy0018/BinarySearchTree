@@ -29,7 +29,7 @@ public class BinarySearchTree {
 		return root;
 	}
 
-	public int maxele() {
+    public int maxele() {
         Node max_ele = root;
         while(max_ele.right != null) {
             max_ele = max_ele.right;
