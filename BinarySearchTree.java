@@ -35,6 +35,43 @@ public class BinarySearchTree {
 			preorder(root.right);
 		}
 	}
+
+	void inorder(Node root) {
+		if(root != null) {
+			inorder(root.left);
+			System.out.print(root.data + " ");
+			inorder(root.right);
+		}
+	}
+
+	void postorder(Node root) {
+		if(root != null) {
+			postorder(root.left);
+			postorder(root.right);
+			System.out.print(root.data + " ");
+		}
+	}
+
+	public boolean search(int val) {
+		return searchRecursive(root, val);
+	}
+
+	private boolean searchRecursive(Node root, int val) {
+		if(root == null) {
+			return false;
+		}
+		if(root.data == val) {
+			return true;
+		}
+		else {
+			if(val < root.data) {
+				return searchRecursive(root.left, val);
+			}
+			else {
+				return searchRecursive(root.right, val);
+			}
+		}
+	}
 	
 
 	public static void main(String[] args) {
@@ -47,9 +84,17 @@ public class BinarySearchTree {
 		bst.insert(4);
 		bst.insert(7);
 		bst.insert(9);
-		bst.preorder(bst.root);
-		
+		// bst.postorder(bst.root);
+		boolean res = bst.search(3);
+		if(res) {
+			System.out.println("Element is found");
+		}
+		else {
+			System.out.println("Element is not found");
+		}
 		// preorder-5,3,2,4,8,7,9
+
+		
 		
 		
 
