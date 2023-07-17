@@ -68,7 +68,7 @@ public class BinarySearchTree {
         if(node == null) {
             return false;
         }
-        return Math.abs(getHeight(node.left), getHeight(node.right)) && balanced(node.left) && balanced(node.right);
+        return Math.abs(getHeight(node.left) - getHeight(node.right)) <= 1 && balanced(node.left) && balanced(node.right);
     }
 	
 	void preorder(Node root) {
